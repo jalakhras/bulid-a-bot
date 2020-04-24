@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div>
-      <img  class="robot" src="../assets/robot-home.png" aria-hidden="true"/>
+      <img  class="robot" src="../../assets/robot-home.png" aria-hidden="true"/>
     </div>
     <div class="Get-stated">
       <a href="">Get strted</a> buliding your first robot

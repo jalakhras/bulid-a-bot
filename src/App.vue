@@ -11,18 +11,18 @@
       </nav>
     </header>
     <main>
-      <HomePage />
+      <RobotBulider />
     </main>
   </div>
 </template>
 
 <script>
-import HomePage from './components/HomePage.vue';
+import RobotBulider from './components/bulid/RobotBulider';
 
 export default {
   name: 'App',
   components: {
-    HomePage
+    RobotBulider
   }
 };
 </script>

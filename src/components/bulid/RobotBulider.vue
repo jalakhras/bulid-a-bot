@@ -1,8 +1,9 @@
 <template>
-   <div>
+   <div class="content">
+     <button class="add-to-cart" @click="addToCart">Add to cart</button>
     <div class="top-row">
       <div class="top part">
-        <div  class="rebot-name">{{selectedRobot.head.title}}
+        <div  class="robot-name">{{selectedRobot.head.title}}
           <span class="sale" v-if="selectedRobot.head.onSale">Sale!</span>
         </div>
         <img :src="selectedRobot.head.src" title="head"/>
@@ -34,6 +35,21 @@
         <button @click="selectNextBase()" class="next-selector">&#9658;</button>
       </div>
     </div>
+    <div>
+      <h1>Cart</h1>
+      <table>
+        <header>
+          <th>robot</th>
+          <th class="cost">Cost</th>
+        </header>
+        <tbody>
+          <tr v-for="(robot,index) in cart" :key="index">
+            <td>{{robot.head.title}}</td>
+            <td class="cost">{{robot.cost}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -54,6 +70,7 @@ export default {
   name :'RobotBuliders' ,
   data(){
     return {
+      cart :[],
       availableParts,
       selectedHeadIndex: 0,
       selectedLeftArmIndex: 0,
@@ -64,6 +81,16 @@ export default {
     };
   },
   methods : {
+    addToCart()
+    {
+      const robot = this.selectedRobot ;
+      const cost = robot.head.cost
+      + robot.leftArm.cost
+      + robot.rightArm.cost
+      + robot.torso.cost
+      + robot.base.cost;
+      this.cart.push(Object.assign({} ,robot,{cost}));
+    },
     selectNextHead() {
       this.selectedHeadIndex =
         getNextValidIndex(
@@ -239,7 +266,7 @@ export default {
 .right .next-selector {
   right: -3px;
 }
-.rebot-name{
+.robot-name{
   position: absolute;
   top: -25px;
   text-align: center;
@@ -247,5 +274,29 @@ export default {
 }
 .sale{
   color:  red;;
+}
+.content {
+  position: relative;
+}
+.add-to-cart {
+  position: absolute;
+  right: 30px;
+  width: 220px;
+  padding: 3px;
+  font-size: 16px;
+}
+td, th {
+  text-align: left;
+  padding: 5px;
+  padding-right: 20px;
+}
+.cost {
+  text-align: right;
+}
+table{
+  border-color : white;
+}
+header {
+  background-color: white !important;
 }
 </style>

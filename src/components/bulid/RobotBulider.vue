@@ -2,18 +2,18 @@
    <div class="content">
      <button class="add-to-cart" @click="addToCart">Add to cart</button>
     <div class="top-row">
-           <PartSelector/>
+           <PartSelector position='top' :parts='availableParts.heads'/>
     </div>
     <div class="middle-row">
-           <PartSelector/>
+           <PartSelector position='left' :parts='availableParts.arms'/>
 
-           <PartSelector/>
+           <PartSelector position='center' :parts='availableParts.torsos'/>
 
-           <PartSelector/>
+           <PartSelector position='right' :parts='availableParts.arms'/>
 
     </div>
     <div class="bottom-row">
-           <PartSelector/>
+           <PartSelector position='bottom' :parts='availableParts.bases'/>
 
     </div>
     <div>

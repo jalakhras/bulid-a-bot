@@ -2,7 +2,7 @@
    <div class="content">
      <button class="add-to-cart" @click="addToCart">Add to cart</button>
     <div class="top-row">
-      <div class="top part" :style="headBorderStyle">
+      <div class="top part" :class="{'sale-border' : selectedRobot.head.onSale}">
         <div  class="robot-name">{{selectedRobot.head.title}}
           <span class="sale" v-if="selectedRobot.head.onSale">Sale!</span>
         </div>
@@ -68,6 +68,9 @@ function getNextValidIndex(index, length) {
 
 export default {
   name :'RobotBuliders' ,
+  created () {
+    console.log('Created!');
+  },
   data(){
     return {
       cart :[],
@@ -181,7 +184,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style  scoped>
 .part {
   position: relative;
   width:165px;
@@ -302,5 +305,8 @@ table{
 }
 header {
   background-color: white !important;
+}
+.sale-border {
+  border: 3px solid red;
 }
 </style>

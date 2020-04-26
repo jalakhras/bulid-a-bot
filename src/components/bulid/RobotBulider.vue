@@ -65,12 +65,10 @@ function getNextValidIndex(index, length) {
   return incrementedIndex > length - 1 ? 0 : incrementedIndex;
 }
 
-
+import CreatedHookMixin from './Created-hook-mixin';
 export default {
   name :'RobotBuliders' ,
-  created () {
-    console.log('Created!');
-  },
+  mixins: [CreatedHookMixin],
   data(){
     return {
       cart :[],

@@ -4,7 +4,7 @@
       <img  class="robot" src="../../assets/robot-home.png" aria-hidden="true"/>
     </div>
     <div class="Get-stated">
-      <a href="">Get strted</a> buliding your first robot
+      <router-link to="/bulid">Get strted</router-link> buliding your first robot
 
     </div>
   </div>

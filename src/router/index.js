@@ -20,7 +20,7 @@ export default new Router({
       component : RobotBulider ,
     },
     {
-      path: '/parts',
+      path: '/parts/:partType/:id',
       name: 'parts',
       component : PartInfo ,
     },

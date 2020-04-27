@@ -1,6 +1,7 @@
 
 <template>
 <div class="preview">
+  <CollapsibleSection>
       <div class="preview-content">
         <div class="top-row">
           <img :src="selectedRobot.head.src"/>
@@ -14,12 +15,15 @@
           <img :src="selectedRobot.base.src"/>
         </div>
       </div>
+      </CollapsibleSection>
     </div>
 </template>
 
 <script>
+import CollapsibleSection from '../../Sherd/CollapsibleSection';
 export default {
 
+  components :{CollapsibleSection},
   props: {
     selectedRobot: {
       type: Object,

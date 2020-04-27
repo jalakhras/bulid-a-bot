@@ -11,18 +11,16 @@
       </nav>
     </header>
     <main>
-      <RobotBulider />
+     <router-view/>
     </main>
   </div>
 </template>
 
 <script>
-import RobotBulider from './components/bulid/RobotBulider';
 
 export default {
   name: 'App',
   components: {
-    RobotBulider
   }
 };
 </script>

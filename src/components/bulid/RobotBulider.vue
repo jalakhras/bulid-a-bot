@@ -1,19 +1,24 @@
 <template>
    <div class="content">
+
+     <RobotPreview :selectedRobot='selectedRobot'/>
+     <div>
      <button class="add-to-cart" @click="addToCart">Add to cart</button>
+     </div>
+
     <div class="top-row">
-           <PartSelector position='top' :parts='availableParts.heads'/>
+           <PartSelector position='top' :parts='availableParts.heads' @partSelected='part=>selectedRobot.head=part'/>
     </div>
     <div class="middle-row">
-           <PartSelector position='left' :parts='availableParts.arms'/>
+           <PartSelector position='left' :parts='availableParts.arms'  @partSelected='part=>selectedRobot.leftArm=part'/>
 
-           <PartSelector position='center' :parts='availableParts.torsos'/>
+           <PartSelector position='center' :parts='availableParts.torsos'  @partSelected='part=>selectedRobot.torso=part'/>
 
-           <PartSelector position='right' :parts='availableParts.arms'/>
+           <PartSelector position='right' :parts='availableParts.arms ' @partSelected='part=>selectedRobot.rightArm=part'/>
 
     </div>
     <div class="bottom-row">
-           <PartSelector position='bottom' :parts='availableParts.bases'/>
+           <PartSelector position='bottom' :parts='availableParts.bases'  @partSelected='part=>selectedRobot.base=part'/>
 
     </div>
     <div>
@@ -38,10 +43,11 @@
 import availableParts from '../../data/part';
 import CreatedHookMixin from './Created-hook-mixin';
 import PartSelector from './PartSelector';
+import RobotPreview from './RobotPreview';
 export default {
   name :'RobotBuliders' ,
   mixins: [CreatedHookMixin],
-  components:{PartSelector },
+  components:{PartSelector,RobotPreview },
   data(){
     return {
       cart :[],
@@ -81,6 +87,14 @@ export default {
 </script>
 
 <style  scoped>
+.add-to-cart {
+     position: absolute;
+    width: 210px;
+    padding: 3px;
+    font-size: 16px;
+    right: 5px;
+    top: 137px;
+}
 .part {
   position: relative;
   width:165px;
@@ -181,13 +195,7 @@ export default {
 .content {
   position: relative;
 }
-.add-to-cart {
-  position: absolute;
-  right: 30px;
-  width: 220px;
-  padding: 3px;
-  font-size: 16px;
-}
+
 td, th {
   text-align: left;
   padding: 5px;
@@ -205,4 +213,5 @@ header {
 .sale-border {
   border: 3px solid red;
 }
+
 </style>
